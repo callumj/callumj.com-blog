@@ -5,15 +5,13 @@
 		<title>callumj :: internet website page of callum jones<%= " - " + @post.title if @post != nil %></title>
 		<link rel="stylesheet" href="/style.css" type="text/css" media="screen" title="no title" charset="utf-8" />
 		<% if @adminMode %><link rel="stylesheet" href="/admin.css" type="text/css" media="screen" title="no title" charset="utf-8" /><% end %>
+		<% if @adminMode %><script src="/admin.js" type="text/javascript" charset="utf-8"></script><% end %>
+		<% if @adminMode %><script src="/textile.js" type="text/javascript" charset="utf-8"></script><% end %>
 		<link rel="alternate" href="/rss.xml" title="callumj feed" type="application/rss+xml" />
 		<meta name="Generator" content="FrontPage 4.0" />
 		<meta http-equiv="X-UA-Compatible" content="IE=8" /> 
 	</head>
 	<body>
-		<div id="content">
-			<%= yield %>
-		</div>
-		
 		<div id="navigation">
 			<p class="big">callumj</p>
 			<ul class="mainnav">
@@ -28,6 +26,97 @@
 				<li><p><a href="http://www.flickr.com/photos/callumj/">flickr</a></p></li>
 			</ul>
 		</div>
+				
+		<div id="content">
+			<%= yield %>
+		</div>
 		
+		<% if @adminMode %>
+			<div id="cheatsheet">
+				<h1>Textile cheatsheet</h1>
+				<div id="cheatsheet_contents">
+					<div>
+						<p>h1. Header 1</p>
+						<p>h2. Header 2</p>
+						<p>h3. Header 3</p>
+						<p>h4. Header 4</p>
+						<p>h5. Header 5</p>
+					</div>
+
+					<div>
+						<p>This is a paragraph, which is text surrounded by whitespace. Paragraphs can be on one 
+						line (or many), and can drone on for hours.  "Quotes" and 'quotes' are handled 
+						nicely--as are dashes and such.</p>
+					</div>
+
+					<div>
+						<p>Here is a link to "Warped":http://warpedvisions.org.</p>
+					</div>
+
+					<div>
+						<p>Now some inline markup like _italics_,  *bold*, and <code>code()</code>. Note
+						that underscores in words are ignored. Textile also has a few handy character helpers like 
+						trademark(TM), reserved(R), copyright(C), ellipses ..., superscripts^2, subscripts~2, 
+						and so on.</p>
+					</div>
+
+					<div>
+						<p>!/images/photo.jpeg(this is the alt text)!</p>
+					</div>
+
+					<div>
+						<p>bq. Blockquotes are like quoted text in email replies</p>
+					</div>
+
+					<div>
+						<p>* Bullet lists are easy too</p>
+						<p>* Another one</p>
+						<p>* Another one</p>
+					</div>
+
+					<div>
+						<p># A numbered list</p>
+						<p># Which is numbered</p>
+						<p># With periods and a space</p>
+					</div>
+
+					<div>
+						<p>A mixed list:</p>
+
+						<p>* Bullet one</p>
+						<p>* Bullet two</p>
+						<p>## Step 1</p>
+						<p>## Step 2</p>
+						<p>## Step 3</p>
+						<p>* Bullet three</p>
+						<p>** Sub Bullet 1</p>
+						<p>** Sub Bullet 2</p>
+					</div>
+
+					<div>
+						<p>Text with  
+						newlines
+						(on the right)  
+						can be used  
+						for things like poems  
+						with the right css.</p>
+					</div>
+
+					<div>
+						<p>|_.Col 1|_.Col 2|_.Col 3|</p>
+						<p>|a|table|row|</p>
+						<p>|a|table|row|</p>
+					</div>
+
+					<div>
+						<p></p>
+					</div>
+
+					<div>
+						<p>ABC(Abbreviation definition here)</p>
+					</div>
+				</div>
+			</div>
+		<% end %>	
 	</body>
 </html>

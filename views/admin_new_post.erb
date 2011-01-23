@@ -1,15 +1,29 @@
 	<div id="formentry">
 		<h2>Create a new post</h2>
+		<a href="javascript:toggleCheetSheet();">Show/hide cheatsheet</a>
 		<form action="/admin/post_submit?admin_key=<%= params[:admin_key] %>" method="post" accept-charset="utf-8">
-			<p>Unique name (reference): <input type="text" name="ref_name" <%= "value=\"#{@post.ref}\"" if @post != nil %> /></p>
-			<p>Hidden from front page? <input type="radio" name="hidden" value="true" <%= "checked" if @postIsHidden %> />Yes
+			<p class="input_name">Unique name (reference)<p>
+			<p><input type="text" name="ref_name" <%= "value=\"#{@post.ref}\"" if @post != nil %> /></p>
+			<p class="input_name">Hidden from front page? <input type="radio" name="hidden" value="true" <%= "checked" if @postIsHidden %> />Yes
 				<input type="radio" name="hidden" value="false" <%= "checked" unless @postIsHidden %> /> No </p>
-			<p>Post title: <input type="text" name="title" <%= "value=\"#{@post.title}\"" if @post != nil %> /></p>
-			<p>Tags (comma separated): <input type="text" name="tags" <%= "value=\"#{@post.tags.join(", ")}\"" if @post != nil %> /></p>
-			<h3>Body</h3>
-			<p><textarea name="body" rows="15" cols="60"><%= @post.content if @post != nil %></textarea></p>
+			<p class="input_name">Post title</p>
+			<p><input type="text" name="title" <%= "value=\"#{@post.title}\"" if @post != nil %> /></p>
+			<p class="input_name">Tags (comma separated)</p>
+			<p><input type="text" name="tags" <%= "value=\"#{@post.tags.join(", ")}\"" if @post != nil %> /></p>
+			<br />
+			<p><textarea id="post_content" name="body" rows="15" cols="60"><%= @post.content if @post != nil %></textarea></p>
 			<%= "<input type=\"hidden\" name=\"mode\" value=\"update\" />" if @post != nil %>
 			<p><input type="submit" value="Submit"></p>
 		</form>
-		
 	</div>
+	
+	<div id="preview_post">
+		<h1>Preview</h1>
+		<div id="content_render" class="post-focus">
+			
+		</div>
+	</div>
+	
+	<script type="text/javascript">
+		setInterval("updatePreviewArea()", 10000);
+	</script>

@@ -1,7 +1,11 @@
 		<% @posts.each do |post| %>
 			<div class="post">
 				<h2><%= post.title %></h2>
-				<div class="content"><%= RedCloth.new(post.content).to_html %></div>
+				<% if post.rendered_content != nil %>
+					<div class="content"><%= post.rendered_content %></div>
+				<% else %>
+					<div class="content"><%= RedCloth.new(post.content).to_html %></div>
+				<% end %>
 				<p class="info"><a href="/post/<%= post.ref %>.html#comment">add a comment</a> Posted <%= Time.at(post.created_at.to_i).strftime("%d/%m/%Y") %> as <%= post.tags.collect{|word| "<a href=\"/tag/#{word}\">#{word}</a>#{", " unless post.tags.last == word}"}.join%></p>
 			</div>
 		<% end %>

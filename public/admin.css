@@ -1,6 +1,8 @@
 /* Form configuration */
-#formentry input {
-	font-size: 16pt;
+#formentry input[type="text"] {
+	font-size: 13pt;
+	width: 500px;
+	width: 80%;
 }
 
 #formentry h3 {
@@ -14,6 +16,37 @@
 	padding: 0 0 0 0;
 }
 
+#formentry p.input_name {
+	margin-top: 10px;
+	padding-left: 5px;
+	border-left: 5px solid #133444;
+}
+
 #formentry textarea {
-	font-size: 13pt;
+	font-size: 10pt;
+	width: 100%;
+}
+
+#cheatsheet {
+	padding-left: 20px;
+	padding-right: 20px;
+	position: absolute;
+	float: left;
+	top: 0;
+	left: 0;
+	width: 350px;
+	background-color: #132144;
+	z-index: 10;
+	opacity: 0.98;
+	color: #c9c9c9;
+}
+
+#cheatsheet div p {
+	font-size: 9pt;
+	margin: 0;
+	padding: 0;
+}
+
+#cheatsheet div {
+	margin-bottom: 10px;
 }

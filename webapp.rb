@@ -138,6 +138,7 @@ post '/admin/post_submit' do
   
   lookup.title = postTitle
   lookup.content = params[:body]
+  lookup.rendered_content = RedCloth.new(params[:body]).to_html
   lookup.tags = tagCol
   lookup.ref = postRef
   lookup.hidden = postHiddenBool.eql? "true"
