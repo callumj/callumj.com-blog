@@ -18,7 +18,7 @@ end
 
 #Basic pages
 get '/' do
-  @posts = Post.all(:limit => 30, :order => 'created_at DESC', :conditions => {:hidden => [false, nil]})
+  @posts = Post.all(:limit => 10, :order => 'created_at DESC', :conditions => {:hidden => [false, nil]})
   erb :index
 end
 

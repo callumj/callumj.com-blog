@@ -18,8 +18,8 @@ body {
 	padding: 0 0 0 5px;
 	margin: 0 0 0 0;
 	position: relative;
-	left: 35%;
-	width: 64%;
+	left: 25%;
+	width: 55%;
 	background-color: #ffffff;
 	display: block;
 	z-index: 5;
@@ -30,24 +30,24 @@ body {
 }
 
 .post {
-	border-bottom: 2px solid black;
+	
 	padding-bottom: 5px;
-	margin-bottom: 10px;
+	margin-bottom: 40px;
 }
 
-.post h2 {
-	background-color: #4097d6;
+.post h2, .post-focus h2 {
 	font-size: xx-large;
-	color: white;
-	padding: 0 0 3px 10px;
-	margin: 0 0 0 0;
-	border-left: 15px solid #1c435f;
+	font-weight: bold;
+	color: black;
+	padding: 0 0 2px 0px;
+	margin: 0 0 5px 0;
+	border-right: 10px solid #1c435f;
+	border-bottom: 2px solid #1c435f;
 }
 
-.post .content {
+.post .content, .post-focus .content {
 	font-size: 11pt;
 	font-weight: 400;
-	background-color: #ebeded;
 	padding: 0 2px 0 2px;
 	margin: 0 0 5px 0;
 }
@@ -57,7 +57,7 @@ body {
 	margin: 0 0 0 0;
 }
 
-.post .info {
+.post .info, .post-focus .info {
 	padding: 0 0 0 0;
 	margin: 0 0 0 0;
 	background-color: #ffffff;
@@ -71,27 +71,7 @@ body {
 	padding-bottom: 10px;
 }
 
-.post h2, .post-focus h2 {
-	background-color: #4097d6;
-	font-size: xx-large;
-	font-weight: bold;
-	color: white;
-	padding: 0 0 3px 10px;
-	margin: 0 0 0 0;
-	border-left: 15px solid #1c435f;
-}
-
-.post-focus .content {
-	font-size: 11pt;
-	background-color: #ebeded;
-	padding: 0 2px 0 2px;
-	margin: 5px 0 5px 0;
-}
-
 .post-focus .info {
-	padding: 0 0 0 0;
-	margin: 0 0 0 0;
-	background-color: #ffffff;
 	font-size: 10pt;
 }
 
