@@ -5,3 +5,19 @@
 				<p class="info"><a href="/post/<%= post.ref %>.html#comment">add a comment</a> Posted <%= Time.at(post.created_at.to_i).strftime("%d/%m/%Y") %> as <%= post.tags.collect{|word| "<a href=\"/tag/#{word}\">#{word}</a>#{", " unless post.tags.last == word}"}.join%></p>
 			</div>
 		<% end %>
+		
+		<div id="page_navigation">
+			<% if params[:page_num] != nil && params[:page_num] != 0 %>
+				<% if params[:tag] == nil %>
+					<div class="page_button"><a href="/page/<%= (params[:page_num].to_i - 1) %>">newer posts</a></div>
+				<% else %>
+					<div class="page_button"><a href="/tag/<%= params[:tag] %>/page/<%= (params[:page_num].to_i - 1) %>">newer posts</a></div>
+				<% end %>
+			<% end %>
+			
+			<% if params[:tag] == nil %>
+				<div class="page_button"><a href="/page/<%= (params[:page_num].to_i + 1) %>">older posts</a></div>
+			<% else %>
+				<div class="page_button"><a href="/tag/<%= params[:tag] %>/page/<%= (params[:page_num].to_i + 1) %>">older posts</a></div>
+			<% end %>
+		</div>

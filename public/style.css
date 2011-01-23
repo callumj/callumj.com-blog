@@ -64,7 +64,11 @@ body {
 	font-size: 8pt;
 }
 
-
+.page_button {
+	float: left;
+	padding-right: 7px;
+	font-size: 15pt;
+}
 /* Focused post */
 .post-focus {
 	border-bottom: 3px solid black;
@@ -75,6 +79,7 @@ body {
 	font-size: 10pt;
 }
 
+/* Comments inside a focused post */
 .commentform {
 	padding: 0 0 0 0;
 	margin: 10px 0 0 0;

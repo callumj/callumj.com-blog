@@ -18,13 +18,38 @@ end
 
 #Basic pages
 get '/' do
+  params[:page_num] = 1
   @posts = Post.all(:limit => 10, :order => 'created_at DESC', :conditions => {:hidden => [false, nil]})
   erb :index
 end
 
+get '/page/:page_num' do
+  offset = (params[:page_num].to_i * 10) - 10
+  offset = 0 if (offset < 0)
+  @posts = Post.all(:limit => 10, :offset => offset, :order => 'created_at DESC', :conditions => {:hidden => [false, nil]})
+  if (@posts.size == 0)
+    redirect "/page/#{params[:page_num].to_i - 1}"
+  else
+    erb :index
+  end
+end
+
 get '/tag/:tag' do
-  @posts = Post.all(:tags => params[:tag])
+  params[:page_num] = 1
+  @posts = Post.all(:tags => params[:tag], :limit => 10)
   erb :index
+end
+
+get '/tag/:tag/page/:page' do
+  offset = (params[:page_num].to_i * 10) - 10
+  offset = 0 if (offset < 0)
+  @posts = Post.all(:tags => params[:tag], :limit => 10, :offset => offset)
+  
+  if (@posts.size == 0)
+    redirect "/tag/#{params[:tag]}/page/#{params[:page_num].to_i - 1}"
+  else
+    erb :index
+  end
 end
 
 get '/post/:ref.html' do
