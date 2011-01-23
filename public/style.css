@@ -127,6 +127,10 @@ body {
 #navigation a, #navigation a:visited, #navigation a:hover {
 }
 
+#navigation a:hover {
+	border-bottom: 2px solid gray;
+}
+
 #navigation {
 	display: block;
 	padding: 0 0 0 0;
