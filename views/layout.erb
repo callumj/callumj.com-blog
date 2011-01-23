@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>callumj :: internet website page of callum jones<%= " - " + @post.title if @post != nil %></title>
+		<link rel="stylesheet" href="/style.css" type="text/css" media="screen" title="no title" charset="utf-8" />
+		<% if @adminMode %><link rel="stylesheet" href="/admin.css" type="text/css" media="screen" title="no title" charset="utf-8" /><% end %>
+		<link rel="alternate" href="/rss.xml" title="callumj feed" type="application/rss+xml" />
+		<meta name="Generator" content="FrontPage 4.0" />
+		<meta http-equiv="X-UA-Compatible" content="IE=8" /> 
+	</head>
+	<body>
+		<div id="content">
+			<%= yield %>
+		</div>
+		
+		<div id="navigation">
+			<p class="big">callumj</p>
+			<ul class="mainnav">
+				<li><p><a href="/">home</a></p></li>
+				<li><p><a href="/post/contact.html">contact</a></p></li>
+				<li><p><a href="/post/about.html">about</a></p></li>
+			</ul>
+			
+			<ul class="mylinks">
+				<li><p><a href="http://www.facebook.com/callumj">facebook</a></p></li>
+				<li><p><a href="http://twitter.com/callumj">twitter</a></p></li>
+				<li><p><a href="http://www.flickr.com/photos/callumj/">flickr</a></p></li>
+			</ul>
+		</div>
+		
+	</body>
+</html>

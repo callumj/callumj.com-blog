@@ -1,0 +1,15 @@
+	<div id="formentry">
+		<h2>Create a new post</h2>
+		<form action="/admin/post_submit?admin_key=<%= params[:admin_key] %>" method="post" accept-charset="utf-8">
+			<p>Unique name (reference): <input type="text" name="ref_name" <%= "value=\"#{@post.ref}\"" if @post != nil %> /></p>
+			<p>Hidden from front page? <input type="radio" name="hidden" value="true" <%= "checked" if @postIsHidden %> />Yes
+				<input type="radio" name="hidden" value="false" <%= "checked" unless @postIsHidden %> /> No </p>
+			<p>Post title: <input type="text" name="title" <%= "value=\"#{@post.title}\"" if @post != nil %> /></p>
+			<p>Tags (comma separated): <input type="text" name="tags" <%= "value=\"#{@post.tags.join(", ")}\"" if @post != nil %> /></p>
+			<h3>Body</h3>
+			<p><textarea name="body" rows="15" cols="60"><%= @post.content if @post != nil %></textarea></p>
+			<%= "<input type=\"hidden\" name=\"mode\" value=\"update\" />" if @post != nil %>
+			<p><input type="submit" value="Submit"></p>
+		</form>
+		
+	</div>

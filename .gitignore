@@ -1,0 +1,8 @@
+#Go away OS X
+.DS_Store
+
+#Secret sssshhh!
+keys.txt
+old/*
+tmp/*
+public/image_store/*

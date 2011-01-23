@@ -1,0 +1,209 @@
+a:link, a:hover, a:visited {
+	text-decoration: none;
+	color: black;
+	border: none;
+}
+
+img {
+	border: none;
+}
+
+body {
+	font-smooth: always;
+	font-family: Trebuchet, 'Trebuchet MS', Helvetica, sans-serif;;
+	background-color: #f8f8f8;
+}
+
+#content {
+	padding: 0 0 0 5px;
+	margin: 0 0 0 0;
+	position: relative;
+	left: 35%;
+	width: 64%;
+	background-color: #ffffff;
+	display: block;
+	z-index: 5;
+}
+
+#content a:link, #content a:hover, #content a:visited {
+	text-decoration: underline;
+}
+
+.post {
+	border-bottom: 2px solid black;
+	padding-bottom: 5px;
+	margin-bottom: 10px;
+}
+
+.post h2 {
+	background-color: #4097d6;
+	font-size: xx-large;
+	color: white;
+	padding: 0 0 3px 10px;
+	margin: 0 0 0 0;
+	border-left: 15px solid #1c435f;
+}
+
+.post .content {
+	font-size: 11pt;
+	font-weight: 400;
+	background-color: #ebeded;
+	padding: 0 2px 0 2px;
+	margin: 0 0 5px 0;
+}
+
+.post .content p {
+	padding: 2px 0 0 0;
+	margin: 0 0 0 0;
+}
+
+.post .info {
+	padding: 0 0 0 0;
+	margin: 0 0 0 0;
+	background-color: #ffffff;
+	font-size: 8pt;
+}
+
+
+/* Focused post */
+.post-focus {
+	border-bottom: 3px solid black;
+	padding-bottom: 10px;
+}
+
+.post h2, .post-focus h2 {
+	background-color: #4097d6;
+	font-size: xx-large;
+	font-weight: bold;
+	color: white;
+	padding: 0 0 3px 10px;
+	margin: 0 0 0 0;
+	border-left: 15px solid #1c435f;
+}
+
+.post-focus .content {
+	font-size: 11pt;
+	background-color: #ebeded;
+	padding: 0 2px 0 2px;
+	margin: 5px 0 5px 0;
+}
+
+.post-focus .info {
+	padding: 0 0 0 0;
+	margin: 0 0 0 0;
+	background-color: #ffffff;
+	font-size: 10pt;
+}
+
+.commentform {
+	padding: 0 0 0 0;
+	margin: 10px 0 0 0;
+}
+
+.commentform h4 {
+	color: gray;
+	font-size: 15pt;
+	padding: 0 0 5px 0;
+	margin: 0 0 0 0;
+}
+
+.commentform p {
+	margin: 0 0 0 0;
+	padding: 0 0 0 0;
+}
+
+.commentform .label {
+	font-size: 13pt;
+	font-weight: bold;
+}
+
+#comments {
+	padding: 2px 0 0 0;
+	margin: 5px 0 0 0;
+	border-top: 1px solid gray;
+}
+
+.comment p {
+	margin: 0 0 0 0;
+	padding: 0 0 0 0;
+}
+
+.comment .author {
+	font-size: 11pt;
+	font-weight: bold;
+}
+
+.comment .message {
+	font-size: 10pt;
+	padding-left: 5px;
+}
+
+/* Navigation */
+#navigation a, #navigation a:visited, #navigation a:hover {
+}
+
+#navigation {
+	display: block;
+	padding: 0 0 0 0;
+	margin: 0 0 0 0;
+	position: absolute;
+	top: 30px;
+	width: 20%;
+	z-index: 2;
+}
+
+#navigation .mainnav {
+	list-style: none;
+	padding: 0 0 0 0;
+	margin: 0 0 0 5px;
+}
+
+#navigation .mainnav li p {
+	padding: 0 0 0 0;
+	margin: 0 0 0 0;
+	font-size: 69pt;
+	font-weight: bold;
+}
+
+#navigation .mylinks {
+	list-style: none;
+	padding: 0 0 0 0;
+	margin: 40px 0 0 5px;
+}
+
+#navigation .mylinks li p {
+	padding: 0 0 0 0;
+	margin: 0 0 0 0;
+	font-size: 25pt;
+	font-weight: bold;
+}
+
+#navigation .otherlinks {
+	width: 100%;
+	list-style: none;
+	padding: 0 0 0 0;
+	margin: 40px 0 0 5px;
+}
+
+#navigation .otherlinks li {
+	width: 100%;
+	padding: 0 0 0 0;
+	margin: 0 0 0 0;
+	font-size: 12pt;
+	font-weight: bold;
+}
+
+#navigation .big {
+	padding: 0 0 5px 0;
+	margin: 0 0 0 0;
+	color: #1c435f;
+	font-size: 70pt;
+	font-weight: bold;
+}
+
+#navigation #google_ads {
+	margin-top: 40px;
+	padding-left: 5px;
+	
+	background-color: #f8f8f8;
+}

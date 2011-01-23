@@ -1,0 +1,19 @@
+/* Form configuration */
+#formentry input {
+	font-size: 16pt;
+}
+
+#formentry h3 {
+	margin: 0 0 0 0;
+	padding: 0 0 0 0;
+}
+
+#formentry p {
+	font-size: 12pt;
+	margin: 0 0 0 0;
+	padding: 0 0 0 0;
+}
+
+#formentry textarea {
+	font-size: 13pt;
+}

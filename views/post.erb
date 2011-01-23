@@ -1,0 +1,31 @@
+			<div class="post-focus">
+				<h2><%= @post.title %></h2>
+				<div class="content"><%= RedCloth.new(@post.content).to_html if @post.content != nil %></div>
+				<p class="info">Posted <%= Time.at(@post.created_at.to_i).strftime("%d/%m/%Y") %> as <%= @post.tags.collect{|word| "<a href=\"/tag/#{word}\">#{word}</a>#{", " unless @post.tags.last == word}"}.join%></p>
+			</div>
+			
+			<% if @post.commentsAllowed != false %>
+				<div class="commentform">
+					<h4><a name="comment">Add a comment</a></h4>
+					<form action="/add_comment" method="post" accept-charset="utf-8">
+						<p class="label">Name</p>
+						<p><input type="text" name="author" /></p>
+						<p class="label">Message</p>
+						<p><textarea name="content" rows="3" cols="50"></textarea></p>
+					
+						<p><input type="hidden" name="message" value="..." /></p>
+						<p><input type="hidden" name="post" value="<%= @post.ref %>" /></p>
+						<p><input type="submit" value="Add comment" /></p>
+					</form>
+				</div>
+				<% if @post.comments.length != 0 %>
+					<div id="comments">
+						<% @post.comments.each do |comment| %>
+							<div class="comment">
+								<p class="author"><%= comment.author %></p>
+								<p class="message"><%= comment.content %> (<%= Time.at(comment.created_at.to_i).strftime("%d/%m/%Y") %>)</p>
+							</div>
+						<% end %>
+					</div>
+				<% end %>
+			<% end %>
