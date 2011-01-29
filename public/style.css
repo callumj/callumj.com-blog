@@ -196,3 +196,10 @@ body {
 	
 	background-color: #f8f8f8;
 }
+
+#navigation .footer {
+	font-size: 7pt;
+	margin-top: 30px;
+	margin-left: 7px;
+	width: 100px;
+}

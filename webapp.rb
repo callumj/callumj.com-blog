@@ -180,7 +180,7 @@ def createRSS(fromPostArray)
   root << channelElement = LibXML::XML::Node.new('channel')
   
   channelElement << titleElement = LibXML::XML::Node.new('title')
-  titleElement << "the callumj internet website"
+  titleElement << "callumj.com. an internet webpage"
   
   channelElement << descriptionElement = LibXML::XML::Node.new('description')
   descriptionElement << "the website by callum jones"
