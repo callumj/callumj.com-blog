@@ -160,13 +160,13 @@ end
 
 #RSS services
 get '/rss.xml' do
-  collection = Post.all(:limit => 30)
+  collection = Post.all(:limit => 30,:order => 'created_at DESC', :conditions => {:hidden => [false, nil]})
   collection = [] if collection == nil
   createRSS(collection)
 end
 
 get '/tag/:value/rss.xml' do
-  collection = Post.all(:tags => params[:tag])
+  collection = Post.all(:tags => params[:tag], :order => 'created_at DESC', :conditions => {:hidden => [false, nil]})
   collection = [] if collection == nil
   createRSS(collection)
 end
