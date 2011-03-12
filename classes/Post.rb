@@ -14,6 +14,7 @@ class Post
   key :content, String
   key :rendered_content, String
   key :created_at, Time
+  key :updated_at, Time
   key :ref, String, :index => true
   key :tags, Array, :index => true
   key :hidden, Boolean

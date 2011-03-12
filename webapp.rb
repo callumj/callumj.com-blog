@@ -142,7 +142,8 @@ post '/admin/post_submit' do
   lookup.tags = tagCol
   lookup.ref = postRef
   lookup.hidden = postHiddenBool.eql? "true"
-
+  lookup.updated_at = Time.new
+  
   lookup.save
   
   redirect '/'

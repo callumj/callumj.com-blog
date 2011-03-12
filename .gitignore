@@ -2,7 +2,9 @@
 .DS_Store
 
 #Secret sssshhh!
+dropbox_settings.conf
 keys.txt
+dropbox_sync.rb
 old/*
 tmp/*
 public/image_store/*
