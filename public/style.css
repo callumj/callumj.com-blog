@@ -10,8 +10,8 @@ img {
 
 body {
 	font-smooth: always;
-	font-family: Trebuchet, 'Trebuchet MS', Helvetica, sans-serif;;
 	background-color: #f8f8f8;
+	font-family: Trebuchet, 'Trebuchet MS', Helvetica, sans-serif;
 }
 
 #content {
@@ -20,7 +20,7 @@ body {
 	position: relative;
 	left: 400px;
 	width: 55%;
-	background-color: #ffffff;
+	background-color: #fefefe;
 	display: block;
 	z-index: 5;
 }
@@ -36,7 +36,7 @@ body {
 }
 
 .post h2, .post-focus h2 {
-	font-size: xx-large;
+	font-size: large;
 	font-weight: bold;
 	color: black;
 	padding: 0 5px 2px 0px;
@@ -50,6 +50,8 @@ body {
 	font-weight: 400;
 	padding: 0 2px 0 2px;
 	margin: 0 0 5px 0;
+	line-height: 15pt;
+	font-family: Garamond;
 }
 
 .post .content p {
