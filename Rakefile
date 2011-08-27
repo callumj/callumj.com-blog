@@ -4,7 +4,7 @@ require File.dirname(__FILE__) + "/dependencies.rb"
 
 task :check_admin do
   admin_user = User.where(:user_name => 'admin').first
-  task :create_admin if admin_user == nil
+  Rake::Task["create_admin"].execute if admin_user == nil
 end
 
 task :create_admin do

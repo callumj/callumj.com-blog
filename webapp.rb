@@ -44,16 +44,18 @@ end
 
 #Basic pages
 get '/' do
-  params[:page_num] = 1
+  params[:page_num] = 0
   @posts = Post.all(:limit => 10, :order => 'created_at DESC', :conditions => {:hidden => [false, nil]})
   erb :index
 end
 
 get '/page/:page_num' do
+  redirect to("/") if params[:page_num].to_i == 0
+  
   offset = (params[:page_num].to_i * 10) - 10
   offset = 0 if (offset < 0)
   @posts = Post.all(:limit => 10, :offset => offset, :order => 'created_at DESC', :conditions => {:hidden => [false, nil]})
-  if (@posts.size == 0)
+  if (@posts.size == 0 && offset > 0)
     redirect "/page/#{params[:page_num].to_i - 1}"
   else
     erb :index
