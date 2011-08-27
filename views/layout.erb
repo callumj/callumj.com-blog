@@ -6,7 +6,6 @@
 		<link rel="stylesheet" href="/style.css" type="text/css" media="screen" title="no title" charset="utf-8" />
 		<% if @adminMode %><link rel="stylesheet" href="/admin.css" type="text/css" media="screen" title="no title" charset="utf-8" /><% end %>
 		<% if @adminMode %><script src="/admin.js" type="text/javascript" charset="utf-8"></script><% end %>
-		<% if @adminMode %><script src="/textile.js" type="text/javascript" charset="utf-8"></script><% end %>
 		<script type="text/javascript">
 
 		  var _gaq = _gaq || [];
@@ -50,88 +49,36 @@
 		
 		<% if @adminMode %>
 			<div id="cheatsheet">
-				<h1>Textile cheatsheet</h1>
+				<h1>Markdown cheatsheet</h1>
 				<div id="cheatsheet_contents">
 					<div>
-						<p>h1. Header 1</p>
-						<p>h2. Header 2</p>
-						<p>h3. Header 3</p>
-						<p>h4. Header 4</p>
-						<p>h5. Header 5</p>
+						<p># Header 1 #</p>
+						<p>## Header 2 ##</p>
+						<p>### Header 3 ###</p>
+						<p>#### Header 4 ####</p>
+						<p>##### Header 5 #####</p>
 					</div>
 
 					<div>
-						<p>This is a paragraph, which is text surrounded by whitespace. Paragraphs can be on one 
-						line (or many), and can drone on for hours.  "Quotes" and 'quotes' are handled 
-						nicely--as are dashes and such.</p>
+						Here is a Markdown link to [Warped](http://warpedvisions.org), and a literal . 
+						Now some SimpleLinks, like one to [google] (automagically links to are-you-
+						feeling-lucky), a [wiki: test] link to a Wikipedia page, and a link to 
+						[foldoc: CPU]s at foldoc.
 					</div>
 
+					<div>Now some inline markup like _italics_,  **bold**, and `code()`.</div>
+
+					<div>![picture alt](/images/photo.jpeg "Title is optional")</div>  
+					
 					<div>
-						<p>Here is a link to "Warped":http://warpedvisions.org.</p>
+					<p>* Bullet lists are easy too</p>
+					<p>- Another one</p>
+					<p>+ Another one</p>
 					</div>
 
-					<div>
-						<p>Now some inline markup like _italics_,  *bold*, and <code>code()</code>. Note
-						that underscores in words are ignored. Textile also has a few handy character helpers like 
-						trademark(TM), reserved(R), copyright(C), ellipses ..., superscripts^2, subscripts~2, 
-						and so on.</p>
-					</div>
-
-					<div>
-						<p>!/images/photo.jpeg(this is the alt text)!</p>
-					</div>
-
-					<div>
-						<p>bq. Blockquotes are like quoted text in email replies</p>
-					</div>
-
-					<div>
-						<p>* Bullet lists are easy too</p>
-						<p>* Another one</p>
-						<p>* Another one</p>
-					</div>
-
-					<div>
-						<p># A numbered list</p>
-						<p># Which is numbered</p>
-						<p># With periods and a space</p>
-					</div>
-
-					<div>
-						<p>A mixed list:</p>
-
-						<p>* Bullet one</p>
-						<p>* Bullet two</p>
-						<p>## Step 1</p>
-						<p>## Step 2</p>
-						<p>## Step 3</p>
-						<p>* Bullet three</p>
-						<p>** Sub Bullet 1</p>
-						<p>** Sub Bullet 2</p>
-					</div>
-
-					<div>
-						<p>Text with  
-						newlines
-						(on the right)  
-						can be used  
-						for things like poems  
-						with the right css.</p>
-					</div>
-
-					<div>
-						<p>|_.Col 1|_.Col 2|_.Col 3|</p>
-						<p>|a|table|row|</p>
-						<p>|a|table|row|</p>
-					</div>
-
-					<div>
-						<p></p>
-					</div>
-
-					<div>
-						<p>ABC(Abbreviation definition here)</p>
-					</div>
+					<p>1. A numbered list</p>
+					<p>2. Which is numbered</p>
+					<p>3. With periods and a space</p>
 				</div>
 			</div>
 		<% end %>	

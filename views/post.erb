@@ -1,6 +1,6 @@
 			<div class="post-focus">
 				<h2><%= @post.title %></h2>
-				<div class="content"><%= RedCloth.new(@post.content).to_html if @post.content != nil %></div>
+				<div class="content"><%= @post.rendered_content %></div>
 				<p class="info">Posted <%= Time.at(@post.created_at.to_i).strftime("%d/%m/%Y") %> as <%= @post.tags.collect{|word| "<a href=\"/tag/#{word}\">#{word}</a>#{", " unless @post.tags.last == word}"}.join%></p>
 			</div>
 			

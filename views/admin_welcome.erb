@@ -1,6 +1,14 @@
 	<h1>Hello!</h1>
 	
-	<h2><a href="/admin/new_post?admin_key=<%= params[:admin_key] %>">Create a new post</a></h2>
-	<h2><a href="/admin/list_posts?admin_key=<%= params[:admin_key] %>">Manage posts</a></h2>
-	<h2><a href="/admin/refresh?admin_key=<%= params[:admin_key] %>">Refresh the post cache</a></h2>
-	<h2><a href="/admin/rebuild?admin_key=<%= params[:admin_key] %>">Force rebuild the post cache</a></h2>
+	<h2><a href="/admin/new_post">Create a new post</a></h2>
+	<h2><a href="/admin/list_posts">Manage posts</a></h2>
+	<h2><a href="/admin/add_user">Add new user</a></h2>
+	
+	<div class="list">
+		<h3>All Users</h3>
+		<ul>
+			<% @all_users.each do |user| %>
+				<li><a href="/admin/edit_user/<%= user.user_name %>"><%= user.display_name %></a></li>
+			<% end %>
+		</ul>
+	</div>

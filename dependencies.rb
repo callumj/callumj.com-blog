@@ -1,11 +1,10 @@
-require 'rubygems'
-require 'sinatra'
-require 'libxml'
-require 'RedCloth'
-require 'mongo_mapper'
+require 'bundler'
+Bundler.require(:default)
 
 MongoMapper.database = 'callumj_com'
 
-require File.dirname(__FILE__) + '/keyman.rb'
-require File.dirname(__FILE__) + '/classes/Post.rb'
+Dir[File.dirname(__FILE__) + '/classes/*.rb'].each do |file| 
+  require File.dirname(__FILE__) + "/classes/" + File.basename(file, File.extname(file))
+end
+
 require File.dirname(__FILE__) + '/webapp.rb'
