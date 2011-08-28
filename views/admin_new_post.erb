@@ -11,8 +11,16 @@
 			<p class="input_name">Tags (comma separated)</p>
 			<p><input type="text" name="tags" <%= "value=\"#{@post.tags.join(", ")}\"" if @post != nil %> /></p>
 			<br />
+			<div id="uploadholder">
+				<div id="uploadstatus" style="display: none">Uploading</div>
+				<input type="file" name="file_upload" id="file_upload" />
+			</div>
+			<br />
 			<p><textarea id="post_content" name="body" rows="15" cols="60"><%= @post.content if @post != nil %></textarea></p>
 			<%= "<input type=\"hidden\" name=\"mode\" value=\"update\" />" if @post != nil %>
 			<p><input type="submit" value="Submit"></p>
 		</form>
+		
+		<form id="uploadform" action="/admin/upload" method="post" style="display: none"></form>
+		<div id="upload_iframe" style="display:none;"></div>
 	</div>

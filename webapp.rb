@@ -31,13 +31,18 @@ helpers do
     end
     
     return (@session != nil && @session.session_valid?)
-  end 
+  end
 end
 
 before do
+  @css_files = ["/style.css"]
+  @js_files = []
   if request.path_info.start_with?("/admin")
     protected!
     @adminMode = true
+    @css_files << "/admin.css"
+    @js_files << "/jquery.js"
+    @js_files << "/admin.js"
   end
 end
 
@@ -81,7 +86,6 @@ get '/tag/:tag/page/:page' do
 end
 
 get '/post/:ref.html' do
-  puts params[:ref]
   @post = Post.first(:conditions => {:ref => params[:ref]})
   redirect '/404' if @post == nil
     
@@ -112,6 +116,7 @@ end
 
 #Admin actions
 get '/admin/new_post' do
+  @js_files << "/upload.js"
   @postIsHidden = false
   
   erb :admin_new_post
@@ -139,8 +144,9 @@ get '/admin/delete/:ref' do
 end
 
 get '/admin/edit/:ref' do
+  @js_files << "/upload.js"
   @post = Post.first(:conditions => {:ref => params[:ref]})
-  redirect "/admin/list_posts?admin_key=#{params[:admin_key]}" if @post == nil
+  redirect "/admin/list_posts" if @post == nil
   @postIsHidden = @post.hidden
   
   erb :admin_new_post
@@ -154,6 +160,8 @@ post '/admin/post_submit' do
   postHiddenBool = params[:hidden]
   
   tagCol = []
+  
+  postRef = postTitle.gsub(/\W+/,"-").downcase unless (postRef != nil && postRef.strip.length > 1)
   
   postTags.split(",").each {|val| tagCol << val.sub(/^\s/, "")}
   
@@ -175,6 +183,43 @@ post '/admin/post_submit' do
   lookup.save
   
   redirect '/'
+end
+
+post '/admin/upload' do
+  resp = {}
+  unless params["file_upload"] != nil
+    resp[:error => "File upload error"]
+  end
+  
+  file = params["file_upload"]
+  
+  #resize if image
+  is_image = false
+  if (file[:type].match(/image[\/]*/) != nil)
+    is_image = true
+    img_data = Magick::Image.read(file[:tempfile].path)
+    if (img_data.length > 0)
+      img = img_data[0]
+      img = img.resize_to_fit(400,400)
+      img.write(file[:tempfile].path)
+    end
+  end
+  
+  path_name = "#{Digest::SHA1.hexdigest("#{file[:filename]}#{Time.now.to_i.to_s}")}#{File.extname(file[:filename])}"
+  AWS::S3::S3Object.store(
+      path_name,
+      open(file[:tempfile]),
+      $GLOBAL_CONFIG["s3"]["bucket"],
+      :content_type => file[:type],
+      :x_amz_acl => "public-read"
+    )
+  
+  resp[:is_image] = is_image
+  resp[:obj_url] = AWS::S3::S3Object.url_for(path_name, $GLOBAL_CONFIG["s3"]["bucket"]).gsub(/[?].*/,"")
+  resp[:old_name] = file[:filename].gsub(File.extname(file[:filename]),"")
+  
+  content_type("json")
+  resp.to_json
 end
 
 #User management

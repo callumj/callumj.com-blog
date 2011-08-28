@@ -1,8 +1,7 @@
 /* Form configuration */
 #formentry input[type="text"] {
 	font-size: 13pt;
-	width: 500px;
-	width: 80%;
+	width: 89%;
 }
 
 #formentry h3 {
@@ -17,14 +16,14 @@
 }
 
 #formentry p.input_name {
-	margin-top: 10px;
+	margin-top: 19px;
 	padding-left: 5px;
 	border-left: 5px solid #133444;
 }
 
 #formentry textarea {
 	font-size: 10pt;
-	width: 100%;
+	width: 95%;
 }
 
 #cheatsheet {
@@ -49,4 +48,13 @@
 
 #cheatsheet div {
 	margin-bottom: 10px;
+}
+
+#uploadstatus {
+	width: 95%;
+	padding: 2px;
+	background-color: #1070f2;
+	text-align: center;
+	color: white;
+	font-size: large;
 }
