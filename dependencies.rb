@@ -4,6 +4,7 @@ Bundler.require(:default)
 
 require 'aws/s3'
 require 'json'
+require 'RMagick'
 require 'digest/sha1'
 
 MongoMapper.database = 'callumj_com'
