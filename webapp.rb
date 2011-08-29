@@ -209,13 +209,13 @@ post '/admin/upload' do
   AWS::S3::S3Object.store(
       path_name,
       open(file[:tempfile]),
-      $GLOBAL_CONFIG["s3"]["bucket"],
+      $GLOBAL_CONFIG["s3"]["buckets"]["default"],
       :content_type => file[:type],
       :x_amz_acl => "public-read"
     )
   
   resp[:is_image] = is_image
-  resp[:obj_url] = AWS::S3::S3Object.url_for(path_name, $GLOBAL_CONFIG["s3"]["bucket"]).gsub(/[?].*/,"")
+  resp[:obj_url] = AWS::S3::S3Object.url_for(path_name, $GLOBAL_CONFIG["s3"]["buckets"]["default"]).gsub(/[?].*/,"")
   resp[:old_name] = file[:filename].gsub(File.extname(file[:filename]),"")
   
   content_type("json")
@@ -284,14 +284,21 @@ error do
 end
 
 #S3 services
-get '/s3/:request' do
+get '/s3_:type/:request' do
+  bucket_name = $GLOBAL_CONFIG["s3"]["buckets"][params[:type]]
+  bucket_name = $GLOBAL_CONFIG["s3"]["buckets"]["default"] if bucket_name == nil
+  
   #check for S3 object existence and redir
-  url = AWS::S3::S3Object.url_for(params[:request], $GLOBAL_CONFIG["s3"]["bucket"])
+  url = AWS::S3::S3Object.url_for(params[:request], bucket_name)
   if (url != nil)
     redirect url.gsub(/[?].*/,"")
   else
     redirect "/"
   end
+end
+
+get '/s3/:request' do
+  redirect to("/s3_default/#{params[:request]}")
 end
 
 #RSS services

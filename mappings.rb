@@ -1,2 +1,2 @@
 urlmap("/s3/resume.pdf",/\/resume.pdf/)
-urlmap("/s3/oldimg_*",/\/image_store\/(.*)/)
+urlmap("/s3_oldimgstore/*",/\/image_store\/(.*)/)
