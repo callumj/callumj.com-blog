@@ -251,9 +251,7 @@ post '/admin/submit_user' do
   
   target_user.user_name = user_name
   target_user.display_name = display_name
-  
   target_user.password = password if !password.empty?
-  
   target_user.save
   
   redirect to('/admin')
@@ -287,7 +285,13 @@ end
 
 #S3 services
 get '/s3/:request' do
-  params[:request]
+  #check for S3 object existence and redir
+  url = AWS::S3::S3Object.url_for(params[:request], $GLOBAL_CONFIG["s3"]["bucket"])
+  if (url != nil)
+    redirect url.gsub(/[?].*/,"")
+  else
+    redirect "/"
+  end
 end
 
 #RSS services
