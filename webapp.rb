@@ -271,11 +271,23 @@ end
 
 #Config directives
 not_found do
-  redirect '/error'
+  #see if have any custom mappings
+  res = UrlMapper.instance.redirect_for(request.path_info)
+  
+  if (res != nil)
+    redirect res
+  else
+    redirect '/error'
+  end
 end
 
 error do
   redirect '/error'
+end
+
+#S3 services
+get '/s3/:request' do
+  params[:request]
 end
 
 #RSS services
