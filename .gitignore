@@ -1,6 +1,9 @@
 #Go away OS X
 .DS_Store
 
+Gemfile.lock
+local_config.yml
+
 #Secret sssshhh!
 dropbox_settings.conf
 keys.txt
