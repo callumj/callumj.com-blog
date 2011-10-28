@@ -201,10 +201,22 @@ post '/admin/upload' do
     if (img_data.length > 0)
       img = img_data[0]
       img = img.resize_to_fit(400,400)
-      img.write(file[:tempfile].path)
+      img.write("#{file[:tempfile].path}_resized")
     end
   end
   
+  resize_path_name = nil
+  if (is_image)
+    resize_path_name = "#{Digest::SHA1.hexdigest("#{file[:filename]}#{Time.now.to_i.to_s}")}_small#{File.extname(file[:filename])}"
+    AWS::S3::S3Object.store(
+        resize_path_name,
+        open("#{file[:tempfile].path}_resized"),
+        $GLOBAL_CONFIG["s3"]["buckets"]["default"],
+        :content_type => file[:type],
+        :x_amz_acl => "public-read"
+      )
+  end
+    
   path_name = "#{Digest::SHA1.hexdigest("#{file[:filename]}#{Time.now.to_i.to_s}")}#{File.extname(file[:filename])}"
   AWS::S3::S3Object.store(
       path_name,
@@ -217,6 +229,8 @@ post '/admin/upload' do
   resp[:is_image] = is_image
   resp[:obj_url] = AWS::S3::S3Object.url_for(path_name, $GLOBAL_CONFIG["s3"]["buckets"]["default"]).gsub(/[?].*/,"")
   resp[:old_name] = file[:filename].gsub(File.extname(file[:filename]),"")
+  
+  resp[:image_url] = AWS::S3::S3Object.url_for(resize_path_name, $GLOBAL_CONFIG["s3"]["buckets"]["default"]).gsub(/[?].*/,"") if (resize_path_name != nil)
   
   content_type("json")
   resp.to_json

@@ -6,10 +6,10 @@ function apply_dom_events()
 {
 	$("#file_upload").change(function() {
 		targetFrame = $( '<iframe name="postframe" id="postframe" class="hidden" src="about:none" />' );
-        $("#upload_iframe").append(targetFrame);
+    $("#upload_iframe").append(targetFrame);
 
-        $('#uploadform').attr( "enctype", "multipart/form-data" );
-        $('#uploadform').attr( "target", "postframe" );
+    $('#uploadform').attr( "enctype", "multipart/form-data" );
+    $('#uploadform').attr( "target", "postframe" );
 		upload_obj = $('#file_upload').clone();
 		$('#file_upload').attr("id", "file_upload_clone");
 		$('#uploadform').append($('#file_upload_clone'));
@@ -37,7 +37,7 @@ function apply_dom_events()
 				
 				if (data.is_image == true)
 				{
-					editor_insert = "![" + data.old_name + "](" + data.obj_url +")";
+					editor_insert = "[![" + data.old_name + "](" + data.image_url +")](" + data.obj_url +")";
 				}
 				else
 				{
