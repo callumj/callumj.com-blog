@@ -12,7 +12,11 @@ class UrlMapper
       if (map[:match].is_a? Regexp)
         if map[:dest].include?("*")
           match_data = map[:match].match(src)
-          map[:cust_dest] = map[:dest].gsub("*", match_data[1]) if (match_data != nil && match_data.size > 1)
+          if (match_data != nil && match_data.size > 1)
+	          map[:cust_dest] = map[:dest].gsub("*", match_data[1]) 
+	        else
+		        redir = false
+		      end
         else
           redir = map[:match].match(src) != nil
         end

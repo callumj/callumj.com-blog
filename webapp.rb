@@ -93,6 +93,7 @@ get '/post/:ref.html' do
 end
 
 get '/error' do
+	status 404
   erb :error
 end
 
@@ -289,12 +290,12 @@ not_found do
   if (res != nil)
     redirect res
   else
-    redirect '/error'
+    erb :error
   end
 end
 
 error do
-  redirect '/error'
+  erb :error
 end
 
 #S3 services
