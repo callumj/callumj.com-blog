@@ -52,11 +52,6 @@ body {
 	line-height: 15pt;
 }
 
-.post .content p {
-	padding: 2px 0 0 0;
-	margin: 0 0 0 0;
-}
-
 .post .info, .post-focus .info {
 	padding: 0 0 0 0;
 	margin: 0 0 0 0;
